@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FSUU DPIT Student Information System</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    header {
+      background: #195176;
+      position: fixed;
+      top: 0%;
+      width: 100%;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      position: relative;
+    }
+
+    h1 {
+      color: white;
+      font-family: "Arial", sans-serif;
+      font-size: 32px;
+    }
+
+    h1>i {
+      color: black;
+      padding: 0px 10px;
+    }
+
+
+    button {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background: black;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-family: "Ubuntu", sans-serif;
+      font-size: 18px;
+    }
+
+    button>i {
+      color: white;
+      padding-left: 10px;
+      font-size: 16px;
+    }
+
+    #section0 {
+      width: 100%;
+      height: 600px;
+      background: url("https://emerging-europe.com/wp-content/uploads/2018/11/bigstock-abstract-technology-background-250119211.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      color: #6bc3fe;
+      font-family: "Calibri", sans-serif;
+      font-size: 55px;
+      padding-top: 200px;
+      text-shadow: 0px 0px 3px #292828;
+    }
+
+    #section1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .section-items {
+      width: 50%;
+    }
+
+    h3 {
+      padding: 30px;
+      font-size: 32px;
+      margin: 0%;
+      color: white;
+      border-radius: 100px;
+    }
+
+    #view {
+      cursor: pointer;
+      text-align: center;
+      font-family: "Ubuntu", sans-serif;
+      padding: 30px;
+      color: white;
+      height: 300px;
+      background: #0199fe;
+      box-sizing: border-box;
+    }
+
+    #view h3>a>i {
+      padding: 0px;
+      font-size: 28px;
+      margin: 0px;
+      color: white;
+      border-radius: 200px;
+      cursor: pointer;
+    }
+
+    #view>a>h3:hover {
+      border-radius: 50px;
+      box-shadow: 5px 5px 20px #429edb, -5px -5px 20px #429edb;
+      cursor: pointer;
+      transition: all 0.8s;
+    }
+
+    #add {
+      text-align: center;
+      font-family: "Ubuntu", sans-serif;
+      padding: 30px;
+      background: #49bc80;
+      color: white;
+      box-sizing: border-box;
+      height: 300px;
+    }
+
+    #add h3>a>i {
+      padding: 0px;
+      margin: 0px;
+      font-size: 28px;
+      color: white;
+      border-radius: 200px;
+      cursor: pointer;
+    }
+
+    #add>a>h3:hover {
+      border-radius: 50px;
+      background: #49bc80;
+      box-shadow: 5px 5px 20px #3ea06d, -5px -5px 20px #54d893;
+      cursor: pointer;
+      transition: all 0.8s;
+    }
+
+    #delete {
+      cursor: pointer;
+      text-align: center;
+      font-family: "Ubuntu", sans-serif;
+      padding: 30px;
+      color: white;
+      background: #c43638;
+      box-sizing: border-box;
+      height: 300px;
+    }
+
+    #delete h3>a>i {
+      padding: 0px;
+      font-size: 28px;
+      margin: 0px;
+      color: white;
+      border-radius: 170px;
+      cursor: pointer;
+    }
+
+    #delete>a>h3:hover {
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 5px 5px 20px #9b282a, -5px -5px 20px #db4f52;
+      transition: all 0.8s;
+    }
+
+    footer {
+      text-align: center;
+      color: white;
+      font-family: "Ubuntu", sans-serif;
+      background: #195176;
+      padding: 10px;
+      height: 90px;
+    }
+
+    .fs {
+      font-family: "Ubuntu", sans-serif;
+      margin: 5px 0px 0px 0px;
+      text-decoration: uppercase;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div>
+        <h1>
+          <i class="fas fa-users"></i>
+          FSUU DPIT Student Information System
+        </h1>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section id="section0">
+      <h2>
+        WELCOME ADMIN
+      </h2>
+    </section>
+    <section id="section1">
+      <div class="section-items">
+        <div id="view">
+          <a href="https://angekat.w3spaces.com/Viewstudent.html">
+            <h3><i class="fas fa-eye"></i><br>
+              <p class="fs">VIEW STUDENT</p>
+            </h3>
+          </a>
+          <p>View student will display student information and records that are stored in the database.
+            Admin has full access to "view student".
+          </p>
+        </div>
+      </div>
+      <div class="section-items">
+        <div id="add">
+          <a href="https://angekat.w3spaces.com/erollstudent.html">
+            <h3><i class="fas fa-user-plus"></i><br>
+              <p class="fs">ENROLL STUDENT</p>
+            </h3>
+          </a>
+          <p>
+            Enroll student will pop up a form in which the details and credentials should be filled properly in
+            order for the student to be enrolled.
+          </p>
+        </div>
+      </div>
+      <div class="section-items">
+        <div id="delete">
+          <a href="https://angekat.w3spaces.com/DeleteStudents.html">
+            <h3><i class="fas fa-user-minus"></i><br>
+              <p class="fs">DROP STUDENT</p>
+            </h3>
+          </a>
+          <p>
+            Drop Student will completely delete the information of the student who is already dropped.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>All Rights Reserved &#169; 2023</p>
+    <p>GROUP 2</p>
+  </footer>
+</body>
+
+</html>
+<script>
+        $(document).ready(function(){
+
+            $('input[type="text"]').val('');
+
+
+
+            $('#testbtn').click( function(event) {
+                event.preventDefault();
+                M.Toast.dismissAll();
+                // serialize form data
+                var formData =  $("#listrec").serializeArray();
+
+                console.log(JSON.stringify(formData));
+
+
+
+
+
+                    // send AJAX request
+                    $.ajax({
+                            url: '172.17.100.12:8081/index.html',
+                            type:'POST',
+                            data: JSON.stringify(formData),
+                            contentType:'application/json',
+                            dataType:'json',
+                            success: function(response) {
+                                if (response.status === "success") {
+                                    //console.log(response.message)
+                                    // console.log(response)
+                                    console.log(response.data)
+
+                                    var template = Handlebars.compile($("#listitems").html());
+                                    var html = template(response);
+
+                                    $("#lstcontainer").html(html);
+
+
+                                    var toastHTML = '<i class="material-icons">search</i>&nbsp;<span>' + response.data.length + ' record(s) was retrieved.</span>';
+                                    M.toast({html: toastHTML , classes: 'rounded'});
+
+
+
+                                    $('#btnclear').click( function(event) {
+                                        event.preventDefault();
+                                        $("#logslist").remove();
+                                    });
+
+
+                                }  else if (response.status === "error") {
+                                    console.log(response.message)
+                                    console.log(response.message_additional)
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(xhr.responseText);
+                            }
+                        });
+
+            });
+
+            $("#submit").click( function(event) {
+                     event.preventDefault();
+
+                      // serialize form data
+                      var formData =  $("#insertForm").serializeArray();
+
+                      console.log(JSON.stringify(formData));
+
+                        // send AJAX request
+                        $.ajax({
+                            url: '/lect/cgi-bin/post.o',
+                            type:'POST',
+                            data: JSON.stringify(formData),
+                            contentType:'application/json',
+                            dataType:'json',
+                            success: function(response) {
+                                if (response.status === "success") {
+                                    console.log(response.message)
+                                    console.log(response.data)
+                                    var toastHTML = '<span>data was inserted.</span>';
+                                    M.toast({html: toastHTML, classes: 'rounded'});
+
+                                    $('input[type="text"]').val('');
+
+                                }  else if (response.status === "error") {
+                                    console.log(response.message)
+                                    console.log(response.message_additional)
+
+                                    var toastHTML = '<i class="material-icons">error_outline</i>&nbsp;<span>' + response.message + '</span>';
+                                    M.toast({html: toastHTML , classes: 'rounded'});
+
+
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(xhr.responseText);
+                            }
+
+
+                        });
+            });
+
+        });
+
+      </script>
+
+</body>
+</html>
