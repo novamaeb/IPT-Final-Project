@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Enrollment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("https://wallpaperaccess.com/full/879330.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: lightblue;
+            padding: 20px;
+        }
+
+        main {
+            display: grid;
+            place-items: center;
+        }
+
+        form {
+            width: 80%;
+            padding: 20px;
+            background-color: lightblue;
+            border: 2px solid black;
+            border-radius: 5px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            max-width: 80%;
+            /* Add "margin-bottom" to create space between the form and the enrolled students section */
+            margin-bottom: 20px;
+        }
+
+        input[name="name"],
+        input[name="email"],
+        input[name="contactNumber"],
+        input[name="address"] {
+            height: 30px;
+            font-size: 14px;
+        }
+
+        .select-container {
+            width: 50px;
+        }
+
+        select[name="sex"] {
+            width: 25%;
+            padding: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        input[name="age"] {
+            width: 100px;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        label,
+        input,
+        select,
+        textarea {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"],
+        #enrollNewStudentButton {
+            display: block;
+            margin: 10px auto;
+            margin-right: 5px;
+            width: 150px;
+            height: 30px;
+            font-size: 14px;
+        }
+
+        label[for="age"] {
+            margin-left: 100px;
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 40px;
+            margin-left: 880px;
+            text-align: center;
+            padding: 10px 40px;
+            font-size: 16px;
+            width: 150px;
+        }
+
+        #enrolledStudentsTable {
+            display: none;
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #enrolledStudentsTable th,
+        #enrolledStudentsTable td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #enrolledStudentsTable th {
+            background-color: lightblue;
+            font-weight: bold;
+        }
+
+        .success-message {
+            margin-top: 20px;
+            color: green;
+        }
+
+        .top-button-container {
+            margin-bottom: 20px;
+            margin-left: 950px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Student Enrollment Form</h1>
+<div class="top-button-container">
+    <button id="backHomeButton" onclick="goToHomePage()" style="background-color: #49A57A; color: white;">Back to Home</button>
+</div>
+<form id="enrollmentForm" onsubmit="enrollStudent(event)" style="margin: 0 auto; width: 80%;">
+    <div style="grid-column: 1/2;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="sex">Sex:</label>
+        <select id="sex" name="sex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+    </div>
+
+    <div style="grid-column: 2/3;">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="contactNumber">Contact Number:</label>
+        <input type="tel" id="contactNumber" name="contactNumber" required>
+
+        <input type="submit" value="Submit" style="background-color: #2F87E0; color: white;">
+        <button id="enrollNewStudentButton" onclick="enrollNewStudent()" style="background-color: #0AA061; color: white;">Enroll New Student</button>
+    </div>
+</form>
+<div id="successMessage" class="success-message" style="display: none;"></div>
+
+<table id="enrolledStudentsTable">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Contact Number</th>
+        <th>Sex</th>
+    </tr>
+</table>
+
+<div class="button-container">
+    <button id="showHideButton" onclick="toggleEnrolledStudents()" style="background-color: #49A57A; color: white;">Show Enrolled Students</button>
+    <button id="clearTableButton" onclick="clearTable()" style="background-color: #49A57A; color: white;">Clear Table</button>
+</div>
+
+<script>
+    var enrolledStudentsTable = document.getElementById('enrolledStudentsTable');
+    var showHideButton = document.getElementById('showHideButton');
+    var clearTableButton = document.getElementById('clearTableButton');
+    var successMessage = document.getElementById('successMessage');
+
+    function enrollStudent(event) {
+        event.preventDefault();
+
+        // Get form values
+        var name = document.getElementById('name').value;
+        var age = document.getElementById('age').value;
+        var email = document.getElementById('email').value;
+        var address = document.getElementById('address').value;
+        var contactNumber = document.getElementById('contactNumber').value;
+        var sex = document.getElementById('sex').value;
+
+        // Create a new row in the table
+        var row = enrolledStudentsTable.insertRow(-1);
+        var nameCell = row.insertCell(0);
+        var ageCell = row.insertCell(1);
+        var emailCell = row.insertCell(2);
+        var addressCell = row.insertCell(3);
+        var contactNumberCell = row.insertCell(4);
+        var sexCell = row.insertCell(5);
+
+        // Add the form values to the table row
+        nameCell.textContent = name;
+        ageCell.textContent = age;
+        emailCell.textContent = email;
+        addressCell.textContent = address;
+        contactNumberCell.textContent = contactNumber;
+        sexCell.textContent = sex;
+
+        // Clear form values
+        document.getElementById('name').value = '';
+        document.getElementById('age').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('address').value = '';
+        document.getElementById('contactNumber').value = '';
+
+        // Show success message
+        successMessage.textContent = 'Student enrolled successfully!';
+        successMessage.style.display = 'block';
+    }
+
+    function enrollNewStudent() {
+        // Hide the enrolled students table
+        enrolledStudentsTable.style.display = 'none';
+
+        // Reset the button text to 'Show Enrolled Students'
+        showHideButton.textContent = 'Show Enrolled Students';
+
+        // Hide the success message
+        successMessage.style.display = 'none';
+    }
+
+    function toggleEnrolledStudents() {
+        if (enrolledStudentsTable.style.display === 'none') {
+            enrolledStudentsTable.style.display = 'table';
+            showHideButton.textContent = 'Hide Enrolled Students';
+        } else {
+            enrolledStudentsTable.style.display = 'none';
+            showHideButton.textContent = 'Show Enrolled Students';
+        }
+    }
+
+    function clearTable() {
+        enrolledStudentsTable.innerHTML = '<tr><th>Name</th><th>Age</th><th>Email</th><th>Address</th><th>Contact Number</th><th>Sex</th></tr>';
+        toggleEnrolledStudents();
+    }
+    
+    function goToHomePage() {
+        window.location.href = "https://angekat.w3spaces.com/StudentInformationSystem.html";
+    }
+</script>
+
+</body>
+</html>
+
