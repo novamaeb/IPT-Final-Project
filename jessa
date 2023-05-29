@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Students</title>
+  <style>
+    body {
+      background-color:   #C3D3E1 ;
+      font-family: Arial, sans-serif;
+      height: 100%;
+  margin: 0;
+    }
+   
+    h1 {
+      color:  #98353E ;
+    }
+   
+    form {
+     
+     
+    }
+   
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color:  #000000;
+    }
+   
+input[type="text"] {
+  padding: 10px;
+  width: 200px;
+  border: 5px solid #98353E;
+  border-radius: 3px;
+  font-size: 14px; /* Adjust the font size value as desired */
+}
+
+   
+    button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="reset"] {
+  padding: 9px 19px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px; /* Adjust the font size value as desired */
+}
+
+}
+
+button[type="submit"]
+
+
+button[type="reset"]:hover {
+}
+    #message {
+      margin-top: 20px;
+      color: #4CAF50;
+    }
+     .container {
+    width: 100%;
+    max-width: 800px;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+   
+    table {
+      width: 100%;
+    border-collapse: collapse;
+    }
+   
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+   
+    th {
+      background-color: #98353E;
+      color: white;
+      text-align: center;
+    }
+   
+    td:last-child {
+      text-align: center;
+    }
+    td:nth-child(1),
+td:nth-child(2) {
+  text-align: center;
+}
+tbody#studentList {
+  height: calc(100% - 40px); /* Adjust this value as needed */
+  overflow-y: auto;
+}
+   
+    .deleted {
+      color: red;
+    }
+   
+    .active {
+      color: green;
+    }
+   
+    .highlight {
+      animation: highlightEffect 2s ease-in-out;
+    }
+   
+    @keyframes highlightEffect {
+      0% {
+        background-color: yellow;
+      }
+      50% {
+        background-color: white;
+      }
+      100% {
+        background-color: yellow;
+      }
+      #backHomeButton {
+  position: absolute;
+  top: 40px; /* Adjust the top value as needed */
+  right: 150px; /* Adjust the right value as needed */
+}
+
+    }
+  </style>
+  <script>
+    var students = [
+      {
+        id: "21100001056",
+        name: "Jasmine Acido",
+        contactNumber: "09667556296",
+        email: "jasmine.acido@urios.edu.ph",
+        address: "P16 Mauswagon Pagatpatan, Butuan City",
+        age: 21
+      },
+      // Rest of the student data...
+      {
+        id: "21100001508",
+        name: "Ivan Jay Bacsin",
+        contactNumber: "09123289344",
+        email: "ivanjay.bacsin@urios.edu.ph",
+        address: "P1 Agao, Butuan City",
+        age: 20
+      },
+        {
+    id: "21100000905",
+    name: "Ernesto Balbuena Jr.",
+    contactNumber: "09145678923",
+    email: "ernesto.balbuenajr@urios.edu.ph",
+    address: "Brgy. 19 P2 Buhangin, Butuan City",
+    age: 21
+  },
+  {
+    id: "19100000238",
+    name: "Nova Mae Butao",
+    contactNumber: "09156789123",
+    email: "nova.butao@urios.edu.ph",
+    address: "P6 Brgy. 18 Santis, Butuan City",
+    age: 21
+  },
+  {
+    id: "21100001310",
+    name: "Kate Angeline Caballes",
+    contactNumber: "09094794557",
+    email: "kate.caballes@urios.edu.ph",
+    address: "Agusan Pequeno Butuan City",
+    age: 21
+  },
+  {
+    id: "21100001011",
+    name: "Oliver Wendell Ceniza",
+    contactNumber: "09672599956",
+    email: "oliver.ceniza@urios.edu.ph",
+    address: "P-Narra, Talisay, Nasipit, Agusan Del Norte",
+    age: 21
+  },
+  {
+    id: "21100001346",
+    name: "Gelie Ann Fuentes",
+    contactNumber: "09105443414",
+    email: "gelie.fuentes@urios.edu.ph",
+    address: "Blk-26 Lot-12 P1 Emily Homes Subd., Libertad Butuan City",
+    age: 22
+  },
+  {
+    id: "21100001053",
+    name: "Jona Mae Gitalada",
+    contactNumber: "09271880144",
+    email: "jona.gitalada@urios.edu.ph",
+    address: "P4 Brgy. 1 R.T.R Agusan Del Norte",
+    age: 20
+  },
+  {
+    id: "21100000768",
+    name: "Christian John Ibe",
+    contactNumber: "09109497371",
+    email: "christian.ibe@urios.edu.ph",
+    address: "P-6 Tandang Sora, Butuan City",
+    age: 21
+  },
+  {
+    id: "21100001231",
+    name: "Pinky Lasco",
+    contactNumber: "09388938518",
+    email: "pinky.lasco@urios.edu.ph",
+    address: "P2 Anticala, Butuan City",
+    age: 20
+  },
+  {
+    id: "21100001429",
+    name: "Sheekinah Nortega",
+    contactNumber: "09197960326",
+    email: "sheekinah.nortega@urios.edu.ph",
+    address: "P7 Bading, Butuan City",
+    age: 20
+  },
+  {
+    id: "21100001549",
+    name: "Queen Marnil Plaza",
+    contactNumber: "09631911226",
+    email: "queenmarnil.plaza@urios.edu.ph",
+    address: "P10 Bood Pinamanculan, Butuan City",
+    age: 21
+  },
+  {
+    id: "21100001109",
+    name: "Leizel Postanes",
+    contactNumber: "0992521094",
+    email: "leizel.postanes@urios.edu.ph",
+    address: "P9 block 3, Brgy. J.P Rizal Butuan City",
+    age: 21
+  },
+  {
+    id: "21100001113",
+    name: "Charles Kerwin Pulido",
+    contactNumber: "09452203713",
+    email: "charles.pulido@urios.edu.ph",
+    address: "P2 Upper Doongan, Butuan City",
+    age: 21
+  },
+  {
+    id: "21100001115",
+    name: "Jezreel Pulido Jr.",
+    contactNumber: "09501805854",
+    email: "jezreel.pulidojr@urios.edu.ph",
+    address: "P2 Upper Doongan, Butuan City",
+    age: 21
+  },
+  {
+    id: "21100000886",
+    name: "Jessa Mae Quirol",
+    contactNumber: "09922102319",
+    email: "jessa.quirol@urios.edu.ph",
+    address: "P2-A Taguibo, Butuan City",
+    age: 21
+  },
+  {
+    id: "21100001281",
+    name: "Prince Rene Ramirez",
+    contactNumber: "09664608696",
+    email: "prince.ramirez@urios.edu.ph",
+    address: "Princess homes 5, Butuan City",
+    age: 20
+  },
+  {
+    id: "21100001124",
+    name: "Fil Jhon Revilla",
+    contactNumber: "09102003944",
+    email: "filjhon.revilla@urios.edu.ph",
+    address: "P9. Bancasi Butuan City",
+    age: 21
+  },
+  {
+    id: "21100000926",
+    name: "Roxie Romanos",
+    contactNumber: "09102245678",
+    email: "roxie.romanos@urios.edu.ph",
+    address: "Banza, Butuan City",
+    age: 21
+  },
+  {
+    id: "21100001246",
+    name: "Joemarie Salon",
+    contactNumber: "09275501744",
+    email: "joemarie.salon@urios.edu.ph",
+    address: "Km-3 Alviola, Baan Butuan City",
+    age: 22
+  },
+  {
+    id: "18100000276",
+    name: "Princess Mae Torregosa",
+    contactNumber: "09516873566",
+    email: "princess.torregosa@urios.edu.ph",
+    address: "P6, Villa Kananga Butuan City",
+    age: 21
+  },
+  {
+    id: "21100000979",
+    name: "Neil Rikson Toyco",
+    contactNumber: "09300134533",
+    email: "neilrikson.toyco@urios.edu.ph",
+    address: "Agusan Pequeno Butuan City",
+    age: 21
+  },
+  {
+    id: "21100001374",
+    name: "Sheila Mae Villarente",
+    contactNumber: "09475598523",
+    email: "sheila.villarente@urios.edu.ph",
+    address: "P2 Anticala, Butuan City",
+    age: 21
+  },
+  {
+    id: "21100000993",
+    name: "Remejean Yamson",
+    contactNumber: "09166679182",
+    email: "remejean.yamson@urios.edu.ph",
+    address: "P5-A Silad Mahogany, Butuan City",
+    age: 21
+  }
+    ];
+   
+    function displayStudentList() {
+      var studentList = document.getElementById("studentList");
+      studentList.innerHTML = ""; // Clear existing student rows
+     
+      for (var i = 0; i < students.length; i++) {
+        var student = students[i];
+       
+        var row = document.createElement("tr");
+        var idCell = document.createElement("td");
+        var nameCell = document.createElement("td");
+        var statusCell = document.createElement("td");
+       
+        idCell.textContent = student.id;
+        nameCell.textContent = student.name;
+       
+        if (student.deleted) {
+          statusCell.textContent = "Dropped";
+          statusCell.classList.add("deleted");
+          row.classList.add("highlight"); // Apply the highlight effect to deleted student rows
+        } else {
+          statusCell.textContent = "Active";
+          statusCell.classList.add("active");
+        }
+       
+        row.appendChild(idCell);
+        row.appendChild(nameCell);
+        row.appendChild(statusCell);
+       
+        studentList.appendChild(row);
+      }
+    }
+   
+    function deleteStudent() {
+      var studentId = document.getElementById("studentId").value;
+     
+      for (var i = 0; i < students.length; i++) {
+        var student = students[i];
+       
+        if (student.id === studentId) {
+          student.deleted = true;
+          break;
+        }
+      }
+     
+      displayStudentList();
+    }
+   
+    function resetForm() {
+      document.getElementById("studentId").value = "";
+    }
+   
+   function goBack() {
+    window.location.href = "https://angekat.w3spaces.com/StudentInformationSystem.html";
+  }
+
+  // ...
+
+  window.onload = function() {
+    displayStudentList();
+
+    var backHomeButton = document.getElementById("backHomeButton");
+    backHomeButton.addEventListener("click", goBack);
+    };
+  </script>
+</head>
+<body>
+  <h1>Delete Students</h1>
+ 
+  <form>
+    <label for="studentId">Student ID:</label>
+    <input type="text" id="studentId" placeholder="Enter student ID">
+   
+<button type="button" onclick="deleteStudent()" style="background-color: red; color: white; width: 55px; height: 30px; font-size: 12px;">Delete</button>
+
+
+    <button type="reset" onclick="resetForm()">Reset</button>
+   
+    <input type="button" id="backHomeButton" value="Back Home" style="background-color: #337ab7; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; font-size: 12px;">
+
+  </form>
+ 
+  <div id="message"></div>
+ 
+  <table>
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="studentList">
+      <!-- Student rows will be dynamically added here -->
+    </tbody>
+  </table>
+</body>
+</html>
+
